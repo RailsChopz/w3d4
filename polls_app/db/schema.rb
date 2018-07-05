@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180705222132) do
+ActiveRecord::Schema.define(version: 20180705233325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,9 @@ ActiveRecord::Schema.define(version: 20180705222132) do
   create_table "polls", force: :cascade do |t|
     t.string "poll_name", null: false
     t.integer "user_id", null: false
-    t.integer "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["poll_name"], name: "index_polls_on_poll_name", unique: true
-    t.index ["question_id"], name: "index_polls_on_question_id"
     t.index ["user_id"], name: "index_polls_on_user_id"
   end
 
@@ -45,12 +43,10 @@ ActiveRecord::Schema.define(version: 20180705222132) do
 
   create_table "responses", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "question_id", null: false
     t.integer "answer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_responses_on_answer_id"
-    t.index ["question_id"], name: "index_responses_on_question_id"
     t.index ["user_id"], name: "index_responses_on_user_id"
   end
 
